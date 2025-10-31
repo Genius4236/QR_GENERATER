@@ -2,8 +2,12 @@ services:
   - type: web
     name: qr-code-generator
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
+    buildFilter:
+      paths:
+        - requirements.txt
+        - "**.py"
