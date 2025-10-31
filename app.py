@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Ensure static folder exists
-@app.before_first_request
+@app.before_request
 def create_static_folder():
     if not os.path.exists('static'):
         os.makedirs('static')
