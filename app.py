@@ -27,8 +27,8 @@ def index():
                 qr.add_data(text)
                 qr.make(fit=True)
 
-                # Create QR image with cyberpunk colors
-                img = qr.make_image(fill_color="#00ff41", back_color="black")
+                # Create QR image with white color
+                img = qr.make_image(fill_color="white", back_color="black")
                 
                 # Generate unique filename
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
