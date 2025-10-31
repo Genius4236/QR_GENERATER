@@ -2,12 +2,11 @@ services:
   - type: web
     name: qr-code-generator
     env: python
-    buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    plan: free
+    buildCommand: bash ./build.sh
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
-    buildFilter:
-      paths:
-        - requirements.txt
-        - "**.py"
+      - key: FLASK_ENV
+        value: production
